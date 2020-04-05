@@ -1,13 +1,26 @@
-// import './styles/styles.scss';
-// import './components/filter';
+//Fetch Data + build components
 
-function component() {
-  console.log('gulp');
-    const element = document.createElement('div');
+const fetchFbPlayersURL = '/football-players';
+getJSON(fetchFbPlayersURL).then((fbPlayers) => {
+  console.log(fbPlayers);
+}).catch((e) => {
+  console.log('Error ' + e);
+})
 
-    element.innerHTML = 'It works';
 
-    return element;
-  }
 
-  document.body.appendChild(component());
+
+
+
+
+
+// const component = () => {
+//   console.log('gulp');
+//     const element = document.createElement('div');
+
+//     element.innerHTML = 'It works';
+
+//     return element;
+//   }
+
+// document.body.appendChild(component());

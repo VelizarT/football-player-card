@@ -1,1 +1,3 @@
-console.log('filter test');
+class Filter {
+    
+}
