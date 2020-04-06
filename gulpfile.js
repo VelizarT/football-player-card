@@ -1,16 +1,12 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const browserSync = require('browser-sync').create();
 const cssnano = require('cssnano');
-const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const concat = require('gulp-concat');
 const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
-const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
 const eslint = require('gulp-eslint');
 const jest = require('gulp-jest').default;
@@ -19,10 +15,12 @@ const webpackConfig = require('./webpack.config');
 
 const sassPathAll = './src/sass/**/*.scss';
 const sassMain = './src/sass/main.scss';
+const jsEntryPath = './src/js/main.js';
 const jsPath = './src/js/**/*.js';
 const imagePath = './src/img/**/*.+(png|jpg|gif|svg)';
 const htmlPath = './dist/index.html';
-const testPath = './src/tests/';
+const testEntryPath = './src/tests/';
+const testPath = './src/tests/**/*test.js';
 
 // SASS task to compile and create a sourcemap
 
@@ -49,7 +47,7 @@ gulp.task('sass', () => {
 // JavaScript Task
 
 gulp.task('javascript', () => gulp
-  .src([jsPath])
+  .src(jsEntryPath)
   .pipe(webpack(webpackConfig))
   .pipe(rename((path) => {
     path.basename += '.min';
@@ -82,10 +80,10 @@ gulp.task('watch', (done) => {
         sassPathAll,
         jsPath,
         imagePath,
+        testPath,
       ],
-      gulp.parallel(['sass', 'javascript', 'imagemin']),
-    )
-    .on('change', browserSync.reload);
+      gulp.parallel(['lint', 'jest', 'sass', 'javascript', 'imagemin']),
+    );
 });
 
 // Clear Cache
@@ -107,9 +105,10 @@ gulp.task('lint', () => gulp
 gulp.task('jest', () => {
   process.env.NODE_ENV = 'test';
 
-  return gulp.src(testPath).pipe(jest({
-    automock: false,
-  }));
+  return gulp
+    .src(testEntryPath)
+    .pipe(jest({ automock: false })
+    .on('error', (error) => {}));
 });
 
 // Default task
