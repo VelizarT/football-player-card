@@ -23,6 +23,7 @@ const buildCard = ({
     const sprite =  document.createElement('img');
     sprite.classList.add('card__sprite', 'sprite' + teamId);
     sprite.src = './img/transparent.png';
+    sprite.setAttribute('alt', 'Logo');
 
     imgContainer.appendChild(foregroundImg);
     imgContainer.appendChild(sprite);
@@ -34,11 +35,11 @@ const buildCard = ({
 
     const cardTitle = document.createElement('h3');
     cardTitle.classList.add('card__title');
-    cardTitle.innerText = firstName + lastName;
+    cardTitle.innerText = firstName + ' ' + lastName;
 
     const cardSubtitle = document.createElement('h4');
     cardSubtitle.classList.add('card__subtitle');
-    cardSubtitle.innerText = position;
+    cardSubtitle.innerText = getPosition(position);
 
     // Create stats list
 
@@ -50,7 +51,7 @@ const buildCard = ({
         statsItem.classList.add('card__stats-detail');
         
         const statsName = document.createElement('em');
-        statsName.innerText = stat.name;
+        statsName.innerText = getStatsFullName(stat.name);
 
         const statsValue = document.createElement('span');
         statsValue.innerText = stat.value;
