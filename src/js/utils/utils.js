@@ -20,6 +20,8 @@ const getStatsFullName = (statShort) => {
             return 'LOSSES';
         case 'wins':
             return 'WINS';
+        case 'draws':
+            return 'DRAWS';
         case 'fwd_pass':
             return 'FORWARD PASSES';
         case 'goal_assist':
