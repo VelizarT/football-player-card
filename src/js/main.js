@@ -1,26 +1,17 @@
 //Fetch Data + build components
 
-const fetchFbPlayersURL = '/football-players';
-getJSON(fetchFbPlayersURL).then((fbPlayers) => {
-  console.log(fbPlayers);
-}).catch((e) => {
-  console.log('Error ' + e);
-})
+document.addEventListener('DOMContentLoaded', () => {
+  const fetchFbPlayersURL = '/football-players';
+    getJSON(fetchFbPlayersURL).then(data => {
 
+      console.log(data.players);
 
+      const cardFilter = buildCardFilter(data.players);
 
+      const root = document.getElementById('app');
+      root.appendChild(cardFilter);
 
-
-
-
-
-// const component = () => {
-//   console.log('gulp');
-//     const element = document.createElement('div');
-
-//     element.innerHTML = 'It works';
-
-//     return element;
-//   }
-
-// document.body.appendChild(component());
+    }).catch(e => {
+      console.log('Error ' + e);
+    });
+});

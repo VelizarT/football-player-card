@@ -1,0 +1,47 @@
+.card {
+
+    .card__image {
+        background-image: url('/img/background_pattern.png');
+        background-repeat: no-repeat;
+        background-size: 250px 200px;
+        background-position: 50px;
+    }
+
+    .card__foreground {
+        width: 150px;
+        margin-left: 16px;
+        vertical-align: bottom;
+    }
+
+    .card__content {
+        background-color: $coral;
+        padding: 0 16px;
+        color: white;
+    }
+
+    .card__title {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: -0.44px;
+        font-weight: inherit;
+    }
+
+    .card__subtitle {
+        margin: 0;
+        font-size: 16px;
+        font-weight: inherit;
+    }
+
+    .card__sprite {
+        position: absolute;
+        width: 82px;
+        border-radius: 50%;
+        margin-top: 150px;
+        margin-left: 25px;
+    }
+
+    .sprite21 {
+        background: url('/img/badges_sprite.png') -299px -810px;
+        background-size: 742px 890px;
+    }
+}

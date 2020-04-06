@@ -7,8 +7,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: $m-size;
+    background-color: rgb(240, 240, 240);
+}
+
+.hidden {
+    display: none;
 }
 
 button {
@@ -17,8 +20,4 @@ button {
 
 button:disabled {
     cursor: default;
-}
-
-.is-active {
-    color: red;
 }
