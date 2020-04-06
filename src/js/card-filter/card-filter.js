@@ -1,17 +1,19 @@
-const buildCardFilter = data => {
+const { buildFilter } = require('./filter');
+const { buildCards } = require('./cards');
 
-    const cardFilter = document.createElement('div');
-    cardFilter.classList.add('card-filter-cnt');
-    
-    const filter = buildFilter(data);
-    const cards = buildCards(data);
+exports.buildCardFilter = (data) => {
+  const cardFilter = document.createElement('div');
+  cardFilter.classList.add('card-filter-cnt');
 
-    //Show first card
+  const filter = buildFilter(data);
+  const cards = buildCards(data);
 
-    cards.firstChild.classList.remove('hidden');
+  // Show first card
 
-    cardFilter.append(filter);
-    cardFilter.append(cards);
+  cards.firstChild.classList.remove('hidden');
 
-    return cardFilter;
-}
+  cardFilter.append(filter);
+  cardFilter.append(cards);
+
+  return cardFilter;
+};

@@ -1,74 +1,77 @@
-const buildCard = ({ 
-    player: { 
-        id, 
-        name: { first: firstName, last: lastName },
-        info: { position },
-        currentTeam: { id: teamId } 
-    }, stats }) => {
-        
-    const cardContainer = document.createElement('div');
-    cardContainer.setAttribute('name', id);
-    cardContainer.classList.add('card', 'hidden');
+const { getPosition } = require('../utils/utils');
+const { getStatsFullName } = require('../utils/utils');
 
-    // Build img container
+exports.buildCard = ({
+  player: {
+    id,
+    name: { first: firstName, last: lastName },
+    info: { position },
+    currentTeam: { id: teamId },
+  }, stats,
+}) => {
+  const cardContainer = document.createElement('div');
+  cardContainer.setAttribute('name', id);
+  cardContainer.classList.add('card', 'hidden');
 
-    const imgContainer = document.createElement('div');
-    imgContainer.classList.add('card__image');
+  // Build img container
 
-    const foregroundImg = document.createElement('img');
-    foregroundImg.classList.add('card__foreground');
-    foregroundImg.src = './img/p' + id + '.png';
-    foregroundImg.setAttribute('alt', firstName + ' ' + lastName);
+  const imgContainer = document.createElement('div');
+  imgContainer.classList.add('card__image');
 
-    const sprite =  document.createElement('img');
-    sprite.classList.add('card__sprite', 'sprite' + teamId);
-    sprite.src = './img/transparent.png';
-    sprite.setAttribute('alt', 'Logo');
+  const foregroundImg = document.createElement('img');
+  foregroundImg.classList.add('card__foreground');
+  foregroundImg.src = `./img/p${id}.png`;
+  foregroundImg.setAttribute('alt', `${firstName} ${lastName}`);
 
-    imgContainer.appendChild(foregroundImg);
-    imgContainer.appendChild(sprite);
+  const sprite = document.createElement('img');
+  sprite.classList.add('card__sprite', `sprite-${teamId}`);
+  sprite.src = './img/transparent.png';
+  sprite.setAttribute('alt', 'Logo');
 
-    // Build content container
+  imgContainer.appendChild(foregroundImg);
+  imgContainer.appendChild(sprite);
 
-    const contentContainer = document.createElement('div');
-    contentContainer.classList.add('card__content');
+  // Build content container
 
-    const cardTitle = document.createElement('h3');
-    cardTitle.classList.add('card__title');
-    cardTitle.innerText = firstName + ' ' + lastName;
+  const contentContainer = document.createElement('div');
+  contentContainer.classList.add('card__content');
 
-    const cardSubtitle = document.createElement('h4');
-    cardSubtitle.classList.add('card__subtitle');
-    cardSubtitle.innerText = getPosition(position);
+  const cardTitle = document.createElement('h3');
+  cardTitle.classList.add('card__title');
+  cardTitle.innerText = `${firstName} ${lastName}`;
 
-    // Create stats list
+  const cardSubtitle = document.createElement('h4');
+  cardSubtitle.classList.add('card__subtitle');
+  cardSubtitle.innerText = getPosition(position);
 
-    const statsContainer = document.createElement('ul');
-    statsContainer.classList.add('card__stats');    
+  // Create stats list
 
-    stats.forEach(stat => {
-        const statsItem = document.createElement('li');
-        statsItem.classList.add('card__stats-detail');
-        
-        const statsName = document.createElement('em');
-        statsName.innerText = getStatsFullName(stat.name);
+  const statsContainer = document.createElement('ul');
+  statsContainer.classList.add('card__stats');
 
-        const statsValue = document.createElement('span');
-        statsValue.innerText = stat.value;
+  stats.forEach((stat) => {
+    const statsItem = document.createElement('li');
+    statsItem.classList.add('card__stats-detail');
 
-        statsItem.appendChild(statsName);
-        statsItem.appendChild(statsValue);
+    const statsName = document.createElement('em');
+    statsName.innerText = getStatsFullName(stat.name);
 
-        statsContainer.appendChild(statsItem)
-    });
+    const statsValue = document.createElement('span');
+    statsValue.innerText = stat.value;
 
-    contentContainer.appendChild(cardTitle);
-    contentContainer.appendChild(cardSubtitle);
-    contentContainer.appendChild(statsContainer);
+    statsItem.appendChild(statsName);
+    statsItem.appendChild(statsValue);
 
-    // Build card
-    cardContainer.appendChild(imgContainer);
-    cardContainer.appendChild(contentContainer);
+    statsContainer.appendChild(statsItem);
+  });
 
-    return cardContainer;
-}
+  contentContainer.appendChild(cardTitle);
+  contentContainer.appendChild(cardSubtitle);
+  contentContainer.appendChild(statsContainer);
+
+  // Build card
+
+  cardContainer.appendChild(imgContainer);
+  cardContainer.appendChild(contentContainer);
+  return cardContainer;
+};

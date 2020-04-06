@@ -1,11 +1,12 @@
-const buildCards = data => {
+const { buildCard } = require('./card');
 
-    const cardsContainer = document.createElement('div');
+exports.buildCards = (data) => {
+  const cardsContainer = document.createElement('div');
 
-    data.forEach(element => {
-        const card = buildCard(element);
-        cardsContainer.appendChild(card);
-    });
+  data.forEach((element) => {
+    const card = buildCard(element);
+    cardsContainer.appendChild(card);
+  });
 
-    return cardsContainer;
-}
+  return cardsContainer;
+};
