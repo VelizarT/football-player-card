@@ -1,11 +1,14 @@
 // Fetch Data + build components
-const { getJSON } = require('./utils/get-data');
-const { buildCardFilter } = require('./card-filter/card-filter');
+const { getPlayers } = require('./utils/data-services');
+const { initializeCardFilter } = require('./card-filter/card-filter');
 
 document.addEventListener('DOMContentLoaded', () => {
   const fetchFbPlayersURL = '/football-players';
-  getJSON(fetchFbPlayersURL).then((data) => {
-    const cardFilter = buildCardFilter(data.players);
+  getPlayers(fetchFbPlayersURL).then((data) => {
+    sessionStorage.setItem('players', JSON.stringify(data.players));
+
+    const cardFilter = initializeCardFilter(data.players);
+
     const root = document.getElementById('app');
     root.appendChild(cardFilter);
   }).catch((e) => {

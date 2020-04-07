@@ -64,6 +64,17 @@ gulp.task('imagemin', () => gulp
   .pipe(cache(imagemin()))
   .pipe(gulp.dest('./dist/img/')));
 
+// Gulp task nodemon
+
+gulp.task('nodemon', (done) => {
+  nodemon({
+    script: './src/server.js',
+    ext: 'js html css',
+    env: { NODE_ENV: 'development' },
+    done,
+  });
+});
+
 // Watch task with nodemon
 
 gulp.task('watch', (done) => {
@@ -82,7 +93,7 @@ gulp.task('watch', (done) => {
         imagePath,
         testPath,
       ],
-      gulp.parallel(['lint', 'jest', 'sass', 'javascript', 'imagemin']),
+      gulp.parallel(['lint', 'sass', 'javascript', 'imagemin']),
     );
 });
 
@@ -107,10 +118,14 @@ gulp.task('jest', () => {
 
   return gulp
     .src(testEntryPath)
-    .pipe(jest({ automock: false })
-    .on('error', (error) => {}));
+    .pipe(jest({ automock: false }))
+    .on('error', (e) => {});
 });
+
+// E2E
+
+gulp.task('test', gulp.parallel(['nodemon', 'jest']));
 
 // Default task
 
-gulp.task('default', gulp.series(['lint', 'jest', 'serve', 'watch']));
+gulp.task('default', gulp.series(['lint', 'serve', 'watch']));

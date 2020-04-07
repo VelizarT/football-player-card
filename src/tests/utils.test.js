@@ -9,7 +9,7 @@ test('Should return full name of position', () => {
   expect(positionF).toBe('Fullback');
 });
 
-test('Should output Position not found', () => {
+test('Should output "Position not found"', () => {
   const randomString = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
   const positionResult = getPosition(randomString);
   expect(positionResult).toBe('Position not found');

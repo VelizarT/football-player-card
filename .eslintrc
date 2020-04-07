@@ -3,7 +3,6 @@
     "env": {
       "browser": true,
       "node": true
-    //   "jquery": true
     },
     "extends": ["airbnb-base"],
     "rules": {
@@ -11,6 +10,11 @@
       "no-unused-vars": 0,
       "no-useless-return": 0,
       "no-undef": 0,
-      "no-restricted-syntax": 0
+      "no-restricted-syntax": 0,
+      "arrow-body-style": 0,
+      "no-unreachable": 0,
+      "no-console": 0,
+      "func-names": 0
+
     }
   }

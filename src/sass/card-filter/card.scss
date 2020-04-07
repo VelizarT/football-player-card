@@ -10,7 +10,7 @@
         background-position: 50px;
     }
 
-    .card__foreground {
+    .card__profile-img {
         width: 150px;
         margin-left: 16px;
         vertical-align: bottom;
@@ -43,32 +43,27 @@
         border-radius: 50%;
         margin-top: 160px;
         margin-left: 45px;
-        background: url('/img/badges_sprite.png') -300.5px -810px;
+        background: url('/img/badges_sprite.png');
     }
 
     .sprite-21 {
-        // background: url('/img/badges_sprite.png') -300.5px -810px;
-        background-size: 742px 890px;
+        background-size: -300.5px -710px;
     }
 
     .sprite-11 {
-        // background: url('/img/badges_sprite.png') -300.5px -810px;
-        background-size: 742px 890px;
+        background-size: 342px 690px;
     }
 
     .sprite-12 {
-        // background: url('/img/badges_sprite.png') -300.5px -810px;
-        background-size: 742px 890px;
+        background-size: 442px 790px;
     }
 
     .sprite-1 {
-        // background: url('/img/badges_sprite.png') -300.5px -810px;
-        background-size: 742px 890px;
+        background-size: 542px 690px;
     }
 
     .sprite-26 {
-        // background: url('/img/badges_sprite.png') -300.5px -810px;
-        background-size: 742px 890px;
+        background-size: 142px 290px;
     }
 
     .card__stats {

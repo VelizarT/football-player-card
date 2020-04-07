@@ -35,3 +35,50 @@ exports.getStatsFullName = (statShort) => {
       return 'No stat found';
   }
 };
+
+exports.dataGetFilterOptions = (element) => {
+  const { player: { name: { first: firstName, last: lastName }, id } } = element;
+  optionOptions = {
+    displayName: `${firstName} ${lastName}`,
+    value: id,
+  };
+  return optionOptions;
+};
+
+exports.dataGetCardOptions = (element) => {
+  const {
+    player: {
+      id,
+      name: { first: firstName, last: lastName },
+      info: { position },
+      currentTeam: { id: teamId, name: teamName },
+    },
+  } = element;
+
+  let { stats } = element;
+
+  stats = stats.map((item) => {
+    return {
+      name: this.getStatsFullName(item.name),
+      value: item.value,
+    };
+  });
+
+  const options = {
+    id,
+    profileImgOptions: {
+      src: `./img/p${id}.png`,
+      altText: `${firstName} ${lastName}`,
+    },
+    emblemOptions: {
+      customClass: `sprite-${teamId}`,
+      altText: `${teamName} logo`,
+    },
+    titleOptions: {
+      title: `${firstName} ${lastName}`,
+      subtitle: this.getPosition(position),
+    },
+    stats,
+  };
+  return options;
+};
