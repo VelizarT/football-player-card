@@ -103,7 +103,7 @@ gulp.task('clear-cache', (done) => cache.clearAll(done));
 
 // Serve task
 
-gulp.task('serve', gulp.parallel(['sass', 'javascript', 'imagemin']));
+gulp.task('compile', gulp.parallel(['sass', 'javascript', 'imagemin']));
 
 // ESLint
 
@@ -128,4 +128,4 @@ gulp.task('test', gulp.parallel(['nodemon', 'jest']));
 
 // Default task
 
-gulp.task('default', gulp.series(['lint', 'serve', 'watch']));
+gulp.task('default', gulp.series(['lint', 'compile', 'watch']));

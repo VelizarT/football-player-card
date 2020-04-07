@@ -44,26 +44,35 @@
         margin-top: 160px;
         margin-left: 45px;
         background: url('/img/badges_sprite.png');
+        background-size: 742px 890px;
     }
 
     .sprite-21 {
-        background-size: -300.5px -710px;
+        background-position: -300.5px -810px;
     }
+
+    // Not adjusted due to time constraints
 
     .sprite-11 {
-        background-size: 342px 690px;
+        background-position: -200.5px -610px;
     }
+
+    // Not adjusted due to time constraints
 
     .sprite-12 {
-        background-size: 442px 790px;
+        background-position: -500.5px -710px;
     }
+
+    // Not adjusted due to time constraints
 
     .sprite-1 {
-        background-size: 542px 690px;
+        background-position: -500.5px -210px;
     }
 
+    // Not adjusted due to time constraints
+
     .sprite-26 {
-        background-size: 142px 290px;
+        background-position: -300.5px -110px;
     }
 
     .card__stats {
