@@ -128,4 +128,4 @@ gulp.task('test', gulp.parallel(['nodemon', 'jest']));
 
 // Default task
 
-gulp.task('default', gulp.series(['lint', 'compile', 'watch']));
+gulp.task('default', gulp.series(['lint', 'compile', 'imagemin', 'watch']));

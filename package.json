@@ -6,7 +6,7 @@
     "defaults"
   ],
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node src/server.js"
   },
   "author": "Velizar Tonchev",
   "license": "MIT",
