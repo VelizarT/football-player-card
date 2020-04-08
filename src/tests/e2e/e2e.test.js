@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-test('It should click around', async () => {
+test('It should check if card updates on filter', async () => {
   const browser = await puppeteer.launch({
     headless: false,
     slowMo: 80,
