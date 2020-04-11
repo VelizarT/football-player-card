@@ -129,7 +129,7 @@ exports.populateCard = (options) => {
   card.children[1].children[1].innerText = options.titleOptions.subtitle;
 
   options.stats.forEach((stat, i) => {
-    card.children[1].children[2].children[0].children[0].innerText = stat.name;
-    card.children[1].children[2].children[0].children[1].innerText = stat.value;
+    card.children[1].children[2].children[i].children[0].innerText = stat.name;
+    card.children[1].children[2].children[i].children[1].innerText = stat.value;
   });
 };

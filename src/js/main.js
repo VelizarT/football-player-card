@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fetchFbPlayersURL = '/football-players';
   getPlayers(fetchFbPlayersURL).then((data) => {
     sessionStorage.setItem('players', JSON.stringify(data.players));
-
+    console.log(data.players);
     const cardFilter = initializeCardFilter(data.players);
 
     const root = document.getElementById('app');
