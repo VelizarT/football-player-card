@@ -1,21 +1,42 @@
 const { dataGetFilterOptions } = require('../utils/utils');
 
+// Build default option
+
+function buildDefaultOption() {
+  const defaultOption = document.createElement('option');
+  defaultOption.innerText = 'Select a player...';
+  defaultOption.setAttribute('disabled', true);
+  defaultOption.setAttribute('selected', true);
+
+  return defaultOption;
+}
+
+// Build default option
+
+function buildOption(optionOptions) {
+  const option = document.createElement('option');
+  option.innerText = optionOptions.displayName;
+  option.value = optionOptions.value;
+
+  return option;
+}
+
 // Build filter
 
-exports.buildFilter = (data) => {
+function buildFilter(data) {
   const filter = document.createElement('select');
   filter.classList.add('filter');
 
   // Default option
 
-  const defaultOption = this.buildDefaultOption();
+  const defaultOption = buildDefaultOption();
   filter.appendChild(defaultOption);
 
   // Create dropdown
 
   data.forEach((element) => {
     const optionOptions = dataGetFilterOptions(element);
-    const option = this.buildOption(optionOptions);
+    const option = buildOption(optionOptions);
 
     filter.appendChild(option);
   });
@@ -23,25 +44,10 @@ exports.buildFilter = (data) => {
   // Add onChange event
 
   return filter;
-};
+}
 
-// Build default option
-
-exports.buildDefaultOption = () => {
-  const defaultOption = document.createElement('option');
-  defaultOption.innerText = 'Select a player...';
-  defaultOption.setAttribute('disabled', true);
-  defaultOption.setAttribute('selected', true);
-
-  return defaultOption;
-};
-
-// Build default option
-
-exports.buildOption = (optionOptions) => {
-  const option = document.createElement('option');
-  option.innerText = optionOptions.displayName;
-  option.value = optionOptions.value;
-
-  return option;
+module.exports = {
+  buildFilter,
+  buildDefaultOption,
+  buildOption,
 };

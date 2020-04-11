@@ -1,6 +1,6 @@
 // Fetch Data + build components
 const { getPlayers } = require('./utils/data-services');
-const { initializeCardFilter } = require('./card-filter/card-filter');
+const initializeCardFilter = require('./card-filter/card-filter');
 
 document.addEventListener('DOMContentLoaded', () => {
   const fetchFbPlayersURL = '/football-players';

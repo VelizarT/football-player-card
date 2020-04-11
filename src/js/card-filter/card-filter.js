@@ -4,7 +4,7 @@ const { dataGetCardOptions } = require('../utils/utils');
 const { getPlayerById } = require('../utils/data-services');
 const { populateCard } = require('./card');
 
-exports.initializeCardFilter = (data) => {
+function initializeCardFilter(data) {
   const cardFilter = document.createElement('div');
   cardFilter.classList.add('card-filter-cnt');
 
@@ -27,4 +27,6 @@ exports.initializeCardFilter = (data) => {
   cardFilter.append(card);
 
   return cardFilter;
-};
+}
+
+module.exports = initializeCardFilter;
