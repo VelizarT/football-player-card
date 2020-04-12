@@ -1,22 +1,22 @@
 .card {
     padding: 0;
     margin: 0;
-}
 
-.card__image {
-    position: relative;
-    background-image: url('/img/background_pattern.png');
-    background-repeat: no-repeat;
-    background-size: 25rem 20rem;
-    background-position: 5rem;
-    
-    .card__profile-img {
+    &__image {
+        position: relative;
+        background-image: url('/img/background_pattern.png');
+        background-repeat: no-repeat;
+        background-size: 25rem 20rem;
+        background-position: 5rem;
+    }
+
+    &__profile-img {
         width: 15rem;
         margin-left: 1.6rem;
         vertical-align: bottom;
     }
 
-    .card__emblem {
+    &__emblem {
         position: absolute;
         width: 8rem;
         height: 8rem;
@@ -27,64 +27,60 @@
         background-size: 74.2rem 89rem;
     }
 
-    .card__emblem--21 {
+    &__emblem--21 {
         background-position: -30.05rem -81rem;
     }
 
     // Not adjusted due to time constraints
 
-    .card__emblem--11 {
+    &__emblem--11 {
         background-position: -200.5px -610px;
     }
 
     // Not adjusted due to time constraints
-
-    .card__emblem--12 {
+    
+    &__emblem--12 {
         background-position: -500.5px -710px;
     }
-
+    
     // Not adjusted due to time constraints
-
-    .card__emblem--1 {
+    
+    &__emblem--1 {
         background-position: -500.5px -210px;
     }
-
+    
     // Not adjusted due to time constraints
-
-    .card__emblem--26 {
+    
+    &__emblem--26 {
         background-position: -300.5px -110px;
     }
-}
 
-.card__content {
-    background-color: $color-coral;
-    padding: 0 1.6rem;
-    color: $color-white;
-
-    .card__title {
+    &__content {
+        background-color: $color-coral;
+        padding: 0 1.6rem;
+        color: $color-white;
+    }
+    
+    &__title {
         margin: 0;
         padding-top: 2rem;
         letter-spacing: -0.044rem;
-
         @include font-size-weight(2.2rem, inherit);
     }
-
-    .card__subtitle {
+    
+    &__subtitle {
         margin: 0;
         margin-bottom: 2rem;
-
         @include font-size-weight(1.6rem, inherit);
     }
-
-
-
-    .card__stats-box {
+    
+    &__stats-box {
         list-style: none;
         padding-bottom: 1.6rem;
         color: $color-purple;
     }
-
-    .card__stat {
+    
+    &__stat {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -92,9 +88,11 @@
         background-color: $color-light-gray;
         box-shadow: 0 0 0.8rem rgba($color-purple, 0.25);
         padding: 0 1rem;
-
         &:not(:last-child) {
             margin-bottom: 0.2rem;
         }
     }
 }
+
+
+
