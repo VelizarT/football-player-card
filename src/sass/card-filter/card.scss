@@ -4,9 +4,9 @@
 }
 
 .card__image {
+    position: relative;
     background-image: url('/img/background_pattern.png');
     background-repeat: no-repeat;
-    position: relative;
     background-size: 25rem 20rem;
     background-position: 5rem;
     
@@ -57,9 +57,9 @@
 }
 
 .card__content {
-    background-color: $coral;
+    background-color: $color-coral;
     padding: 0 1.6rem;
-    color: white;
+    color: $color-white;
 
     .card__title {
         margin: 0;
@@ -81,7 +81,7 @@
     .card__stats-box {
         list-style: none;
         padding-bottom: 1.6rem;
-        color: #38003c;
+        color: $color-purple;
     }
 
     .card__stat {
@@ -89,8 +89,8 @@
         flex-direction: row;
         justify-content: space-between;
         height: 4rem;
-        background-color: #eaeaea;
-        box-shadow: 0 0 0.8rem rgba(56, 0, 60, 0.25);
+        background-color: $color-light-gray;
+        box-shadow: 0 0 0.8rem rgba($color-purple, 0.25);
         padding: 0 1rem;
 
         &:not(:last-child) {
