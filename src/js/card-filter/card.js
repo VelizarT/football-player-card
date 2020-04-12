@@ -2,7 +2,7 @@
 
 function buildEmblem(emblemOptions) {
   const emblem = document.createElement('img');
-  emblem.classList.add('card__sprite', emblemOptions.customClass);
+  emblem.classList.add('card__emblem', emblemOptions.customClass);
   emblem.src = './img/transparent.png';
   emblem.setAttribute('alt', emblemOptions.altText);
 
@@ -39,7 +39,7 @@ function buildImgContainer(profileImgOptions, emblemOptions) {
 
 function buildStatItem(stat) {
   const statsItem = document.createElement('li');
-  statsItem.classList.add('card__stats-detail');
+  statsItem.classList.add('card__stat');
 
   const statsName = document.createElement('em');
   statsName.innerText = stat.name;
@@ -57,7 +57,7 @@ function buildStatItem(stat) {
 
 function buildStatsList(stats) {
   const statsContainer = document.createElement('ul');
-  statsContainer.classList.add('card__stats');
+  statsContainer.classList.add('card__stats-box');
   stats.forEach((item) => {
     const statsItem = buildStatItem(item);
     statsContainer.appendChild(statsItem);
@@ -122,9 +122,9 @@ const buildCard = (options) => {
 function populateCard(options) {
   const card = document.getElementsByClassName('card')[0];
   card.children[0].children[0].src = options.profileImgOptions.src;
-  card.children[0].children[0].alt = options.profileImgOptions.alt;
-  card.children[0].children[1].className = `card__sprite ${options.emblemOptions.customClass}`;
-  card.children[0].children[1].alt = options.emblemOptions.alt;
+  card.children[0].children[0].alt = options.profileImgOptions.altText;
+  card.children[0].children[1].className = `card__emblem ${options.emblemOptions.customClass}`;
+  card.children[0].children[1].alt = options.emblemOptions.altText;
   card.children[1].children[0].innerText = options.titleOptions.title;
   card.children[1].children[1].innerText = options.titleOptions.subtitle;
 

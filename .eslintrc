@@ -14,7 +14,7 @@
       "arrow-body-style": 0,
       "no-unreachable": 0,
       "no-console": 0,
-      "func-names": 0
-
+      "func-names": 0,
+      "prefer-arrow-callback": 0
     }
   }

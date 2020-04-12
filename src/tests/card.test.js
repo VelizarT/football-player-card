@@ -14,7 +14,7 @@ test('Should build a list item', () => {
   const mockStat = { name: 'goals', value: 28 };
   const statItem = buildStatItem(mockStat);
   expect(statItem instanceof HTMLLIElement).toBe(true);
-  expect(statItem.className).toBe('card__stats-detail');
+  expect(statItem.className).toBe('card__stat');
   expect(statItem.children.length).toBe(2);
   expect(statItem.children[0].innerText).toBe('goals');
   expect(statItem.children[1].innerText).toBe(28);
@@ -37,7 +37,7 @@ test('Should build the card stats', () => {
   ];
   const statsList = buildStatsList(mockStats);
   expect(statsList instanceof HTMLUListElement).toBe(true);
-  expect(statsList.className).toBe('card__stats');
+  expect(statsList.className).toBe('card__stats-box');
   expect(statsList.children.length).toBe(3);
   expect(statsList.children[1].children[0].innerText).toBe('losses');
 });
@@ -65,7 +65,7 @@ test('Should build the card emblem', () => {
   };
   const emblem = buildEmblem(emblemOptions);
   expect(emblem instanceof HTMLImageElement).toBe(true);
-  expect(emblem.className).toBe('card__sprite custom-class');
+  expect(emblem.className).toBe('card__emblem custom-class');
   expect(emblem.src).toBe('http://localhost/img/transparent.png');
   expect(emblem.alt).toBe('emblem');
 });
@@ -129,7 +129,7 @@ test('Should build the card image content container', () => {
   expect(imgContainer.children.length).toBe(2);
   expect(imgContainer.children[0].src).toBe('http://localhost/img/p2064.png');
   expect(imgContainer.children[0].alt).toBe('Wayne Rooney');
-  expect(imgContainer.children[1].className).toBe('card__sprite custom-class');
+  expect(imgContainer.children[1].className).toBe('card__emblem custom-class');
   expect(imgContainer.children[1].alt).toBe('emblem');
 });
 
@@ -169,7 +169,7 @@ test('Should build the card', () => {
   expect(card.children.length).toBe(2);
   expect(card.children[0].children[0].src).toBe('http://localhost/img/p2064.png');
   expect(card.children[0].children[0].alt).toBe('Wayne Rooney');
-  expect(card.children[0].children[1].className).toBe('card__sprite custom-class');
+  expect(card.children[0].children[1].className).toBe('card__emblem custom-class');
   expect(card.children[0].children[1].alt).toBe('emblem');
   expect(card.children[1].children.length).toBe(3);
   expect(card.children[1].children[0].innerText).toBe('Velizar Tonchev');

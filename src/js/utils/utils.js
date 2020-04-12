@@ -1,4 +1,4 @@
-exports.getPosition = (positionShort) => {
+function getPosition(positionShort) {
   switch (positionShort) {
     case 'D':
       return 'Defender';
@@ -9,9 +9,9 @@ exports.getPosition = (positionShort) => {
     default:
       return 'Position not found';
   }
-};
+}
 
-exports.getStatsFullName = (statShort) => {
+function getStatsFullName(statShort) {
   switch (statShort) {
     case 'goals':
       return 'GOALS';
@@ -34,18 +34,18 @@ exports.getStatsFullName = (statShort) => {
     default:
       return 'No stat found';
   }
-};
+}
 
-exports.dataGetFilterOptions = (element) => {
+function dataGetFilterOptions(element) {
   const { player: { name: { first: firstName, last: lastName }, id } } = element;
   optionOptions = {
     displayName: `${firstName} ${lastName}`,
     value: id,
   };
   return optionOptions;
-};
+}
 
-exports.dataGetCardOptions = (element) => {
+function dataGetCardOptions(element) {
   const {
     player: {
       id,
@@ -59,7 +59,7 @@ exports.dataGetCardOptions = (element) => {
 
   stats = stats.map((item) => {
     return {
-      name: this.getStatsFullName(item.name),
+      name: getStatsFullName(item.name),
       value: item.value,
     };
   });
@@ -71,14 +71,21 @@ exports.dataGetCardOptions = (element) => {
       altText: `${firstName} ${lastName}`,
     },
     emblemOptions: {
-      customClass: `sprite-${teamId}`,
+      customClass: `card__emblem--${teamId}`,
       altText: `${teamName} logo`,
     },
     titleOptions: {
       title: `${firstName} ${lastName}`,
-      subtitle: this.getPosition(position),
+      subtitle: getPosition(position),
     },
     stats,
   };
   return options;
+}
+
+module.exports = {
+  getPosition,
+  getStatsFullName,
+  dataGetFilterOptions,
+  dataGetCardOptions,
 };

@@ -7,10 +7,10 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
-const nodemon = require('gulp-nodemon');
 const eslint = require('gulp-eslint');
 const jest = require('gulp-jest').default;
 const webpack = require('webpack-stream');
+const browserSync = require('browser-sync');
 const webpackConfig = require('./webpack.config');
 
 const sassPathAll = './src/sass/**/*.scss';
@@ -64,25 +64,25 @@ gulp.task('imagemin', () => gulp
   .pipe(cache(imagemin()))
   .pipe(gulp.dest('./dist/img/')));
 
-// Gulp task nodemon
+// Browser Sync task
 
-gulp.task('nodemon', (done) => {
-  nodemon({
-    script: './src/server.js',
-    ext: 'js html css',
-    env: { NODE_ENV: 'development' },
-    done,
+gulp.task('browserSync', () => {
+  browserSync.init({
+    server: {
+      baseDir: 'dist',
+    },
+    open: false,
   });
 });
 
-// Watch task with nodemon
+// Watch task with browserSync
 
 gulp.task('watch', (done) => {
-  nodemon({
-    script: './src/server.js',
-    ext: 'js html css',
-    env: { NODE_ENV: 'development' },
-    done,
+  browserSync.init({
+    server: {
+      baseDir: 'dist',
+    },
+    open: false,
   });
   gulp
     .watch(
@@ -124,7 +124,7 @@ gulp.task('jest', () => {
 
 // E2E
 
-gulp.task('test', gulp.parallel(['nodemon', 'jest']));
+gulp.task('test', gulp.parallel(['browserSync', 'jest']));
 
 // Default task
 

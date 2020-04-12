@@ -38,7 +38,7 @@
         margin-bottom: 2rem;
     }
 
-    .card__sprite {
+    .card__emblem {
         position: absolute;
         width: 8rem;
         height: 8rem;
@@ -49,45 +49,41 @@
         background-size: 74.2rem 89rem;
     }
 
-    .sprite-21 {
+    .card__emblem--21 {
         background-position: -30.05rem -81rem;
     }
 
     // Not adjusted due to time constraints
 
-    .sprite-11 {
+    .card__emblem--11 {
         background-position: -200.5px -610px;
     }
 
     // Not adjusted due to time constraints
 
-    .sprite-12 {
+    .card__emblem--12 {
         background-position: -500.5px -710px;
     }
 
     // Not adjusted due to time constraints
 
-    .sprite-1 {
+    .card__emblem--1 {
         background-position: -500.5px -210px;
     }
 
     // Not adjusted due to time constraints
 
-    .sprite-26 {
+    .card__emblem--26 {
         background-position: -300.5px -110px;
     }
 
-    .card__stats {
+    .card__stats-box {
         list-style: none;
         padding-bottom: 1.6rem;
         color: #38003c;
     }
 
-    .card__stats-detail:not(:last-child) {
-        margin-bottom: 0.2rem;
-    }
-
-    .card__stats-detail {
+    .card__stat {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -95,5 +91,9 @@
         background-color: #eaeaea;
         box-shadow: 0 0 0.8rem rgba(56, 0, 60, 0.25);
         padding: 0 1rem;
+
+        &:not(:last-child) {
+            margin-bottom: 0.2rem;
+        }
     }
 }
