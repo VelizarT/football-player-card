@@ -9,91 +9,95 @@
         position: relative;
         background-size: 25rem 20rem;
         background-position: 5rem;
+        
+        .card__profile-img {
+            width: 15rem;
+            margin-left: 1.6rem;
+            vertical-align: bottom;
+        }
+
+        .card__emblem {
+            position: absolute;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            top: 16rem;
+            left: 20rem;
+            background: url('/img/badges_sprite.png');
+            background-size: 74.2rem 89rem;
+        }
+
+        .card__emblem--21 {
+            background-position: -30.05rem -81rem;
+        }
+
+        // Not adjusted due to time constraints
+
+        .card__emblem--11 {
+            background-position: -200.5px -610px;
+        }
+
+        // Not adjusted due to time constraints
+
+        .card__emblem--12 {
+            background-position: -500.5px -710px;
+        }
+
+        // Not adjusted due to time constraints
+
+        .card__emblem--1 {
+            background-position: -500.5px -210px;
+        }
+
+        // Not adjusted due to time constraints
+
+        .card__emblem--26 {
+            background-position: -300.5px -110px;
+        }
     }
 
-    .card__profile-img {
-        width: 15rem;
-        margin-left: 1.6rem;
-        vertical-align: bottom;
-    }
+
 
     .card__content {
         background-color: $coral;
         padding: 0 1.6rem;
         color: white;
-    }
 
-    .card__title {
-        margin: 0;
-        padding-top: 2rem;
-        font-size: 2.2rem;
-        letter-spacing: -0.044rem;
-        font-weight: inherit;
-    }
+        .card__title {
+            margin: 0;
+            padding-top: 2rem;
+            font-size: 2.2rem;
+            letter-spacing: -0.044rem;
+            font-weight: inherit;
+        }
 
-    .card__subtitle {
-        margin: 0;
-        font-size: 1.6rem;
-        font-weight: inherit;
-        margin-bottom: 2rem;
-    }
+        .card__subtitle {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: inherit;
+            margin-bottom: 2rem;
+        }
 
-    .card__emblem {
-        position: absolute;
-        width: 8rem;
-        height: 8rem;
-        border-radius: 50%;
-        top: 16rem;
-        left: 20rem;
-        background: url('/img/badges_sprite.png');
-        background-size: 74.2rem 89rem;
-    }
 
-    .card__emblem--21 {
-        background-position: -30.05rem -81rem;
-    }
 
-    // Not adjusted due to time constraints
+        .card__stats-box {
+            list-style: none;
+            padding-bottom: 1.6rem;
+            color: #38003c;
+        }
 
-    .card__emblem--11 {
-        background-position: -200.5px -610px;
-    }
+        .card__stat {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 4rem;
+            background-color: #eaeaea;
+            box-shadow: 0 0 0.8rem rgba(56, 0, 60, 0.25);
+            padding: 0 1rem;
 
-    // Not adjusted due to time constraints
-
-    .card__emblem--12 {
-        background-position: -500.5px -710px;
-    }
-
-    // Not adjusted due to time constraints
-
-    .card__emblem--1 {
-        background-position: -500.5px -210px;
-    }
-
-    // Not adjusted due to time constraints
-
-    .card__emblem--26 {
-        background-position: -300.5px -110px;
-    }
-
-    .card__stats-box {
-        list-style: none;
-        padding-bottom: 1.6rem;
-        color: #38003c;
-    }
-
-    .card__stat {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        height: 4rem;
-        background-color: #eaeaea;
-        box-shadow: 0 0 0.8rem rgba(56, 0, 60, 0.25);
-        padding: 0 1rem;
-
-        &:not(:last-child) {
-            margin-bottom: 0.2rem;
+            &:not(:last-child) {
+                margin-bottom: 0.2rem;
+            }
         }
     }
 }
