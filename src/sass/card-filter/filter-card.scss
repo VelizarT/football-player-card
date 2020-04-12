@@ -5,8 +5,8 @@
     width: 30rem;
     font-family: $font-arial;
     background-color: white;
-    font-size: 1.6rem;
-    font-weight: 400;
     line-height: 3.6rem;
     letter-spacing: -0.032rem;
+
+    @include font-size-weight(1.6rem, 400);
 }

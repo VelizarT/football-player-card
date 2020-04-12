@@ -24,3 +24,8 @@ button {
 button:disabled {
     cursor: default;
 }
+
+@mixin font-size-weight($size, $weight) {
+    font-size: $size;
+    font-weight: $weight;
+}
