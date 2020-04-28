@@ -41,13 +41,11 @@ function buildFilter(data) {
     filter.appendChild(option);
   });
 
-  // Add onChange event
-
   return filter;
 }
 
 module.exports = {
-  buildFilter,
   buildDefaultOption,
   buildOption,
+  buildFilter,
 };
