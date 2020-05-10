@@ -128,10 +128,10 @@ function populateCard(options) {
   card.children[1].children[0].innerText = options.titleOptions.title;
   card.children[1].children[1].innerText = options.titleOptions.subtitle;
 
-  options.stats.forEach((stat, i) => {
-    card.children[1].children[2].children[i].children[0].innerText = stat.name;
-    card.children[1].children[2].children[i].children[1].innerText = stat.value;
-  });
+  card.children[1].removeChild(card.children[1].lastChild);
+
+  const statsContainer = buildStatsList(options.stats);
+  card.children[1].append(statsContainer);
 }
 
 module.exports = {

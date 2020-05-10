@@ -11,29 +11,12 @@ function getPosition(positionShort) {
   }
 }
 
-function getStatsFullName(statShort) {
-  switch (statShort) {
-    case 'goals':
-      return 'GOALS';
-    case 'losses':
-      return 'LOSSES';
-    case 'wins':
-      return 'WINS';
-    case 'draws':
-      return 'DRAWS';
-    case 'fwd_pass':
-      return 'FORWARD PASSES';
-    case 'goal_assist':
-      return 'GOAL ASSIST';
-    case 'appearances':
-      return 'APPEREANCES';
-    case 'mins_played':
-      return 'MIN PLAYED';
-    case 'backward_pass':
-      return 'BACKWORD PASSES';
-    default:
-      return 'No stat found';
-  }
+function calculateGoalsPerMatch(losses, wins, draws, goals) {
+  return goals / (losses + wins + draws);
+}
+
+function calculatePassesPerMinute(fwdPass, bckdPass, minPlayed) {
+  return (fwdPass + bckdPass) / minPlayed;
 }
 
 function dataGetFilterOptions(element) {
@@ -43,6 +26,82 @@ function dataGetFilterOptions(element) {
     value: id,
   };
   return optionOptions;
+}
+
+function getStats(stats) {
+  const finalStats = [];
+  let goals;
+  let losses;
+  let wins;
+  let draws;
+  let fwdPass;
+  let bckdPass;
+  let minPlayed;
+
+  for (let i = 0; i < stats.length; i += 1) {
+    const curentStatName = stats[i].name;
+    if (curentStatName === 'appearances') {
+      const stat = {
+        name: 'Appearances',
+        value: stats[i].value,
+      };
+      finalStats.push(stat);
+    } else if (curentStatName === 'goals') {
+      const stat = {
+        name: 'Goals',
+        value: stats[i].value,
+      };
+      goals = stats[i].value;
+      finalStats.push(stat);
+    } else if (curentStatName === 'goal_assist') {
+      const stat = {
+        name: 'Assists',
+        value: stats[i].value,
+      };
+      finalStats.push(stat);
+    } else if (curentStatName === 'losses') {
+      losses = stats[i].value;
+    } else if (curentStatName === 'wins') {
+      wins = stats[i].value;
+    } else if (curentStatName === 'draws') {
+      draws = stats[i].value;
+    } else if (curentStatName === 'fwd_pass') {
+      fwdPass = stats[i].value;
+    } else if (curentStatName === 'backward_pass') {
+      bckdPass = stats[i].value;
+    } else if (curentStatName === 'mins_played') {
+      minPlayed = stats[i].value;
+    }
+  }
+  if (losses !== undefined
+      && wins !== undefined
+      && draws !== undefined
+      && goals !== undefined) {
+    const golasPerMatch = Math.round(
+      calculateGoalsPerMatch(losses, wins, draws, goals) * 100,
+    ) / 100;
+    const stat = {
+      name: 'Goals per match',
+      value: golasPerMatch,
+    };
+    finalStats.push(stat);
+  }
+  if (fwdPass !== undefined
+      && bckdPass !== undefined
+      && minPlayed !== undefined) {
+    const golasPerMatch = Math.round(
+      calculatePassesPerMinute(
+        fwdPass, bckdPass, minPlayed,
+      ) * 100,
+    ) / 100;
+    const stat = {
+      name: 'Passes per minute',
+      value: golasPerMatch,
+    };
+    finalStats.push(stat);
+  }
+
+  return finalStats;
 }
 
 function dataGetCardOptions(element) {
@@ -57,12 +116,7 @@ function dataGetCardOptions(element) {
 
   let { stats } = element;
 
-  stats = stats.map((item) => {
-    return {
-      name: getStatsFullName(item.name),
-      value: item.value,
-    };
-  });
+  stats = getStats(stats);
 
   const options = {
     id,
@@ -85,7 +139,9 @@ function dataGetCardOptions(element) {
 
 module.exports = {
   getPosition,
-  getStatsFullName,
+  getStats,
+  calculateGoalsPerMatch,
+  calculatePassesPerMinute,
   dataGetFilterOptions,
   dataGetCardOptions,
 };
