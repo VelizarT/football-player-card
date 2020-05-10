@@ -20,3 +20,24 @@ it('Should build option', () => {
   expect(option.innerText).toBe('Wayne Rooney');
   expect(option.value).toBe('2064');
 });
+
+it('Should build the filter', () => {
+  const mockFilterData = [
+    {
+      player: {
+        name: {
+          first: 'Wayne',
+          last: 'Rooney',
+        },
+        id: 2064,
+      },
+    },
+  ];
+  const filter = buildFilter(mockFilterData);
+
+  expect(filter instanceof HTMLSelectElement).toBe(true);
+  expect(filter.children[0].innerText).toBe('Select a player...');
+  expect(filter.children[0].value).toBe('');
+  expect(filter.children[1].innerText).toBe('Wayne Rooney');
+  expect(filter.children[1].value).toBe('2064');
+});
